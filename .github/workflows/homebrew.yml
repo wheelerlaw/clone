@@ -1,0 +1,17 @@
+name: Bump Homebrew formula
+
+on:
+  push:
+    tags: 'v*'
+
+jobs:
+  homebrew:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mislav/bump-homebrew-formula-action@v4
+        with:
+          formula-name: clone
+          homebrew-tap: wheelerlaw/homebrew-tap
+          base-branch: main
+        env:
+          COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
